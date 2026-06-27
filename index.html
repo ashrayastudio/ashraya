@@ -771,12 +771,11 @@
 
       <div>
         <p style="font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color: var(--mint); opacity:0.8; margin-bottom:14px;">Get notified when Recall launches</p>
-        <div class="recall-notify">
-          <input type="email" placeholder="your@email.com" aria-label="Email address" id="notify-email" />
-          <button class="btn-mint" onclick="handleNotify()">Notify me</button>
-        </div>
+        <form action="https://buttondown.com/api/emails/embed-subscribe/ashrayastudio" method="post" target="_blank" class="recall-notify">
+          <input type="email" name="email" placeholder="your@email.com" aria-label="Email address" required />
+          <button type="submit" class="btn-mint">Notify me</button>
+        </form>
         <p class="notify-note">No spam. One email when it's ready.</p>
-        <p class="notify-note" id="notify-confirm" style="color: var(--mint); display:none; margin-top:6px;">✓ You're on the list.</p>
       </div>
     </div>
   </section>
@@ -822,35 +821,7 @@
     </div>
   </footer>
 
-  <script>
-    async function handleNotify() {
-      const emailInput = document.getElementById('notify-email');
-      const confirm = document.getElementById('notify-confirm');
-      const email = emailInput.value.trim();
-      if (!email || !email.includes('@')) {
-        emailInput.style.borderColor = 'var(--rose)';
-        return;
-      }
-      try {
-        const data = new FormData();
-        data.append('email', email);
-        await fetch('https://buttondown.com/api/emails/embed-subscribe/ashrayastudio', {
-          method: 'POST',
-          body: data
-        });
-        emailInput.style.borderColor = 'var(--mint)';
-        emailInput.value = '';
-        confirm.style.display = 'block';
-      } catch(e) {
-        emailInput.style.borderColor = 'var(--rose)';
-      }
-    }
 
-    // Allow Enter key in email field
-    document.getElementById('notify-email').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') handleNotify();
-    });
-  </script>
 
 </body>
 </html>
