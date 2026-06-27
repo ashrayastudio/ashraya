@@ -823,17 +823,27 @@
   </footer>
 
   <script>
-    function handleNotify() {
-      const email = document.getElementById('notify-email').value.trim();
+    async function handleNotify() {
+      const emailInput = document.getElementById('notify-email');
       const confirm = document.getElementById('notify-confirm');
+      const email = emailInput.value.trim();
       if (!email || !email.includes('@')) {
-        document.getElementById('notify-email').style.borderColor = 'var(--rose)';
+        emailInput.style.borderColor = 'var(--rose)';
         return;
       }
-      // In production: replace this with a real form submission (e.g. Buttondown, Mailchimp, or a simple fetch to a form endpoint)
-      document.getElementById('notify-email').style.borderColor = 'var(--mint)';
-      document.getElementById('notify-email').value = '';
-      confirm.style.display = 'block';
+      try {
+        const data = new FormData();
+        data.append('email', email);
+        await fetch('https://buttondown.com/api/emails/embed-subscribe/ashrayastudio', {
+          method: 'POST',
+          body: data
+        });
+        emailInput.style.borderColor = 'var(--mint)';
+        emailInput.value = '';
+        confirm.style.display = 'block';
+      } catch(e) {
+        emailInput.style.borderColor = 'var(--rose)';
+      }
     }
 
     // Allow Enter key in email field
