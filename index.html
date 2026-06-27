@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashraya Studio — Life, lighter.</title>
+  <meta name="description" content="Calm tools for families carrying a lot. Apps, printables, and rest — made to help you manage the details of life without overwhelm." />
+  <meta property="og:title" content="Ashraya Studio — Life, lighter." />
+  <meta property="og:description" content="Calm tools for families carrying a lot." />
+  <meta property="og:url" content="https://ashraya.ai" />
+  <link rel="canonical" href="https://ashraya.ai/" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap');
+
+    :root {
+      --teal:      #3D7A72;
+      --teal-dk:   #2C5A54;
+      --linen:     #F0EBE1;
+      --linen-dk:  #E4DDD0;
+      --gold:      #C4953A;
+      --mauve:     #B8929E;
+      --rose:      #C07B6A;
+      --lavender:  #9B96C4;
+      --blue:      #5E8FA3;
+      --mint:      #D8E8E2;
+      --text:      #0A1612;
+      --text-md:   #3A4A42;
+      --white:     #FDFAF6;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--linen);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: var(--linen);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--linen-dk);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--teal-dk);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-md);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 40px 80px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-blob-tr {
+      position: absolute;
+      top: -30px;
+      right: -40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: var(--mint);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .hero-blob-bl {
+      position: absolute;
+      bottom: -20px;
+      left: -30px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: var(--linen-dk);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 54px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--teal-dk);
+      margin-bottom: 28px;
+    }
+
+    .hero-body {
+      font-size: 15px;
+      color: var(--text-md);
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--linen);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 24px;
+      border-radius: 8px;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--teal-dk); }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--teal);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 24px;
+      border-radius: 8px;
+      border: 1.5px solid var(--teal);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      margin-left: 12px;
+    }
+
+    .btn-ghost:hover {
+      background: var(--teal);
+      color: var(--linen);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--linen-dk);
+      margin: 0 40px;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 40px;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-md);
+      max-width: 540px;
+      margin-bottom: 48px;
+    }
+
+    /* ── PRODUCT CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px 28px 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-accent {
+      width: 36px;
+      height: 4px;
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+
+    .card-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-md);
+    }
+
+    .card-status {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .status-soon {
+      background: var(--mint);
+      color: var(--teal-dk);
+    }
+
+    .status-live {
+      background: #F5EDD8;
+      color: #6B4E10;
+    }
+
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .card-tagline {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-style: italic;
+      color: var(--teal-dk);
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--text-md);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-link {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-decoration: none;
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .card-link:hover { gap: 10px; }
+
+    .card-link-disabled {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--linen-dk);
+      margin-top: 8px;
+      display: inline-block;
+      cursor: default;
+    }
+
+    /* ── WHY SECTION ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .why-item {}
+
+    .why-item h4 {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .why-item p {
+      font-size: 14px;
+      color: var(--text-md);
+      line-height: 1.6;
+    }
+
+    .why-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    /* ── RECALL FEATURE STRIP ── */
+    .recall-strip {
+      background: var(--teal-dk);
+      padding: 64px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recall-strip-blob {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--mint);
+      opacity: 0.12;
+    }
+
+    .recall-strip-blob-1 {
+      width: 240px;
+      height: 240px;
+      top: -60px;
+      right: -40px;
+    }
+
+    .recall-strip-blob-2 {
+      width: 150px;
+      height: 150px;
+      bottom: -40px;
+      left: 10%;
+    }
+
+    .recall-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .recall-strip .section-eyebrow {
+      color: var(--mint);
+      opacity: 0.8;
+    }
+
+    .recall-strip .section-heading {
+      color: var(--linen);
+    }
+
+    .recall-strip .section-sub {
+      color: rgba(240,235,225,0.75);
+      margin-bottom: 36px;
+    }
+
+    .recall-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .recall-feature {
+      border-left: 2px solid var(--mint);
+      padding-left: 16px;
+    }
+
+    .recall-feature h4 {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--linen);
+      margin-bottom: 6px;
+    }
+
+    .recall-feature p {
+      font-size: 13px;
+      color: rgba(240,235,225,0.7);
+      line-height: 1.55;
+    }
+
+    .recall-notify {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .recall-notify input {
+      padding: 11px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1);
+      color: var(--linen);
+      font-family: var(--font-body);
+      font-size: 14px;
+      width: 240px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .recall-notify input::placeholder { color: rgba(240,235,225,0.45); }
+    .recall-notify input:focus { border-color: var(--mint); }
+
+    .btn-mint {
+      display: inline-block;
+      background: var(--mint);
+      color: var(--teal-dk);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-mint:hover { opacity: 0.88; }
+
+    .notify-note {
+      font-size: 11px;
+      color: rgba(240,235,225,0.45);
+      margin-top: 10px;
+    }
+
+    /* ── PRINTABLES STRIP ── */
+    .print-strip {
+      background: var(--mint);
+      padding: 56px 40px;
+    }
+
+    .print-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .print-text .section-eyebrow { margin-bottom: 10px; }
+
+    .print-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.5vw, 32px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .print-text p {
+      font-size: 14px;
+      color: var(--text-md);
+      max-width: 400px;
+    }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      padding: 72px 40px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .about-strip blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 3vw, 28px);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--teal-dk);
+      line-height: 1.45;
+      border-left: 3px solid var(--teal);
+      padding-left: 24px;
+      margin-bottom: 28px;
+    }
+
+    .about-strip p {
+      font-size: 15px;
+      color: var(--text-md);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--teal-dk);
+      padding: 40px;
+      color: rgba(240,235,225,0.6);
+    }
+
+    .footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--linen);
+      text-decoration: none;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,235,225,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--linen); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(240,235,225,0.35);
+      width: 100%;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .nav-links { gap: 20px; }
+
+      .hero { padding: 64px 20px 56px; }
+      .section { padding: 56px 20px; }
+      .divider { margin: 0 20px; }
+      .recall-strip { padding: 56px 20px; }
+      .print-strip { padding: 48px 20px; }
+      .about-strip { padding: 56px 20px; }
+      footer { padding: 32px 20px; }
+
+      .btn-ghost { margin-left: 0; margin-top: 12px; display: block; text-align: center; }
+
+      .recall-notify input { width: 100%; }
+
+      .print-inner { flex-direction: column; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+    }
+
+    @media (max-width: 400px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="/">Ashraya Studio</a>
+    <ul class="nav-links">
+      <li><a href="#recall">Recall</a></li>
+      <li><a href="#shop">Printables</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="mailto:hello@ashraya.ai">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div style="position:relative; overflow:hidden;">
+    <section class="hero">
+      <div class="hero-blob-tr" aria-hidden="true"></div>
+      <div class="hero-blob-bl" aria-hidden="true"></div>
+      <p class="hero-eyebrow">Ashraya Studio</p>
+      <h1>Calm tools for families<br>carrying a lot.</h1>
+      <p class="hero-tagline">Life, lighter.</p>
+      <p class="hero-body">
+        We make small, private tools that help you hold onto what matters —
+        the details of daily life, your family's important documents, and
+        moments of rest. No overwhelm. No noise.
+      </p>
+      <a class="btn-primary" href="#recall">See Recall</a>
+      <a class="btn-ghost" href="#shop">Printables</a>
+    </section>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- PRODUCTS OVERVIEW -->
+  <section class="section" id="products">
+    <p class="section-eyebrow">What we make</p>
+    <h2 class="section-heading">Three ways to carry less.</h2>
+    <p class="section-sub">Each product does one thing well, without asking much of you.</p>
+
+    <div class="cards">
+      <!-- Recall -->
+      <div class="card">
+        <div class="card-accent" style="background: var(--teal);"></div>
+        <div>
+          <span class="card-status status-soon">Coming soon</span>
+        </div>
+        <p class="card-label">App · iOS</p>
+        <h3>Recall</h3>
+        <p class="card-tagline">Remember the details of your life.</p>
+        <p>Capture restaurants, people, conversations, and colors as you go. Ask a question. Get the answer. No cloud, no ads — everything stays on your phone.</p>
+        <a class="card-link" href="#recall">Learn more →</a>
+      </div>
+
+      <!-- Printables -->
+      <div class="card">
+        <div class="card-accent" style="background: var(--gold);"></div>
+        <div>
+          <span class="card-status status-live">Live on Etsy</span>
+        </div>
+        <p class="card-label">Printables · PDF</p>
+        <h3>Family Organizers</h3>
+        <p class="card-tagline">Get organized before you need to be.</p>
+        <p>The Emergency Binder keeps your family's most important documents in one fillable, printable place. 91 pages. Print once. Update as needed.</p>
+        <a class="card-link" href="https://www.etsy.com/shop/AshrayaStudioCo" target="_blank" rel="noopener">Shop on Etsy →</a>
+      </div>
+
+      <!-- Calm World -->
+      <div class="card">
+        <div class="card-accent" style="background: var(--lavender);"></div>
+        <div>
+          <span class="card-status" style="background: var(--linen-dk); color: var(--text-md);">Coming later</span>
+        </div>
+        <p class="card-label">Video · Music</p>
+        <h3>Calm World</h3>
+        <p class="card-tagline">Rest your mind.</p>
+        <p>Slow, ambient video with world music composed for rest. Made for people who need a few minutes of somewhere else.</p>
+        <span class="card-link-disabled">In the works</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- WHY ASHRAYA -->
+  <section class="section" id="why">
+    <p class="section-eyebrow">Why we exist</p>
+    <h2 class="section-heading">Built for the person<br>quietly managing everything.</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-dot"></div>
+        <h4>Private by default</h4>
+        <p>Your family's details don't belong in the cloud. Our tools keep your information where it should be — with you.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-dot" style="background: var(--gold);"></div>
+        <h4>Simple to use</h4>
+        <p>No systems to maintain, no accounts to manage, no learning curve. Each tool does one thing and gets out of the way.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-dot" style="background: var(--mauve);"></div>
+        <h4>Calm by design</h4>
+        <p>No notifications demanding your attention. No dark patterns. Just a quiet tool that's ready when you need it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECALL DEEP SECTION -->
+  <section class="recall-strip" id="recall">
+    <div class="recall-strip-blob recall-strip-blob-1" aria-hidden="true"></div>
+    <div class="recall-strip-blob recall-strip-blob-2" aria-hidden="true"></div>
+    <div class="recall-inner">
+      <p class="section-eyebrow">Recall · iOS App</p>
+      <h2 class="section-heading">What was that Thai place in March?</h2>
+      <p class="section-sub">Recall captures the small details of daily life so you don't have to hold them in your head. Ask a question in plain language. Get the answer in seconds.</p>
+
+      <div class="recall-features">
+        <div class="recall-feature">
+          <h4>Captures in seconds</h4>
+          <p>Quick-add by voice or text. Log a restaurant, a person, a paint color, a conversation — in the moment, without friction.</p>
+        </div>
+        <div class="recall-feature">
+          <h4>Finds in plain language</h4>
+          <p>"The Italian place near Mom's house" or "what did the doctor say in April" — Recall understands how you actually think.</p>
+        </div>
+        <div class="recall-feature">
+          <h4>Stays on your phone</h4>
+          <p>On-device AI. No server. No subscription required to use your own memories. Free to try, $7.99/month for full access.</p>
+        </div>
+        <div class="recall-feature">
+          <h4>No ads, ever</h4>
+          <p>We don't sell access to your memories. No ads on any tier. Your data is not our product.</p>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color: var(--mint); opacity:0.8; margin-bottom:14px;">Get notified when Recall launches</p>
+        <div class="recall-notify">
+          <input type="email" placeholder="your@email.com" aria-label="Email address" id="notify-email" />
+          <button class="btn-mint" onclick="handleNotify()">Notify me</button>
+        </div>
+        <p class="notify-note">No spam. One email when it's ready.</p>
+        <p class="notify-note" id="notify-confirm" style="color: var(--mint); display:none; margin-top:6px;">✓ You're on the list.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINTABLES STRIP -->
+  <section class="print-strip" id="shop">
+    <div class="print-inner">
+      <div class="print-text">
+        <p class="section-eyebrow">Printables</p>
+        <h2>Your family's important<br>documents, organized.</h2>
+        <p>The Emergency Binder is a 91-page fillable PDF covering everything from insurance and medical records to passwords and last wishes. Print it. Fill it. Store it somewhere safe.</p>
+      </div>
+      <div>
+        <a class="btn-primary" href="https://www.etsy.com/shop/AshrayaStudioCo" target="_blank" rel="noopener">Shop on Etsy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-strip" id="about">
+    <blockquote>
+      "We make tools for the person who is quietly holding everything together — and deserves something that just works."
+    </blockquote>
+    <p>
+      Ashraya Studio is a small independent studio. We build calm, private tools for families managing the details of life: memory, documents, and rest. No investors, no venture funding, no growth-at-all-costs. Just useful things, made carefully.
+    </p>
+    <p style="margin-top:16px;">
+      Questions or feedback? Write to us at <a href="mailto:hello@ashraya.ai" style="color: var(--teal); text-decoration:none;">hello@ashraya.ai</a>
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a class="footer-logo" href="/">Ashraya Studio</a>
+      <ul class="footer-links">
+        <li><a href="#recall">Recall</a></li>
+        <li><a href="https://www.etsy.com/shop/AshrayaStudioCo" target="_blank" rel="noopener">Printables</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="mailto:hello@ashraya.ai">Contact</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 Ashraya Studio. ashraya.ai — Life, lighter.</p>
+    </div>
+  </footer>
+
+  <script>
+    function handleNotify() {
+      const email = document.getElementById('notify-email').value.trim();
+      const confirm = document.getElementById('notify-confirm');
+      if (!email || !email.includes('@')) {
+        document.getElementById('notify-email').style.borderColor = 'var(--rose)';
+        return;
+      }
+      // In production: replace this with a real form submission (e.g. Buttondown, Mailchimp, or a simple fetch to a form endpoint)
+      document.getElementById('notify-email').style.borderColor = 'var(--mint)';
+      document.getElementById('notify-email').value = '';
+      confirm.style.display = 'block';
+    }
+
+    // Allow Enter key in email field
+    document.getElementById('notify-email').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleNotify();
+    });
+  </script>
+
+</body>
+</html>
