@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recall — Your life, remembered.</title>
+  <meta name="description" content="Recall is a private iPhone memory app from Ashraya Studio. Capture daily life details in seconds, then find them later with plain-language search. No ads. No cloud. Your memories stay on your phone." />
+  <meta property="og:title" content="Recall — Your life, remembered." />
+  <meta property="og:description" content="A private iPhone memory app for the details you do not want to lose." />
+  <meta property="og:url" content="https://ashraya.ai/apps/recall/" />
+  <link rel="canonical" href="https://ashraya.ai/apps/recall/" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;600&display=swap');
+
+    :root {
+      --teal:      #3D7A72;
+      --teal-dk:   #2C5A54;
+      --linen:     #F0EBE1;
+      --linen-dk:  #E4DDD0;
+      --gold:      #C4953A;
+      --mauve:     #B8929E;
+      --rose:      #C07B6A;
+      --lavender:  #9B96C4;
+      --blue:      #5E8FA3;
+      --mint:      #D8E8E2;
+      --text:      #0A1612;
+      --text-md:   #3A4A42;
+      --white:     #FDFAF6;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--linen);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+
+    .page-shell { min-height: 100vh; overflow: hidden; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 20px 40px;
+      background: var(--linen);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--linen-dk);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--teal-dk);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-md);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--teal); }
+
+    .nav-cta {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--linen);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible { background: var(--teal-dk); }
+
+    .hero-wrap { position: relative; }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .blob.hero-one {
+      width: 140px;
+      height: 140px;
+      background: var(--mint);
+      top: 62px;
+      right: 8%;
+    }
+
+    .blob.hero-two {
+      width: 100px;
+      height: 100px;
+      background: var(--linen-dk);
+      left: 7%;
+      bottom: 54px;
+    }
+
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 92px 40px 88px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.8fr);
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 6vw, 42px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+      text-wrap: balance;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.4vw, 32px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--teal-dk);
+      line-height: 1.25;
+      margin-bottom: 28px;
+    }
+
+    .hero-body {
+      color: var(--text-md);
+      max-width: 580px;
+      margin-bottom: 34px;
+      font-size: 16px;
+      line-height: 1.72;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--linen);
+      border: none;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible { background: var(--teal-dk); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--teal);
+      border: 1.5px solid var(--teal);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: var(--teal);
+      color: var(--linen);
+    }
+
+    .phone-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 22px;
+      position: relative;
+    }
+
+    .phone-screen {
+      border: 1px solid var(--linen-dk);
+      border-radius: 14px;
+      background: var(--linen);
+      min-height: 520px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .phone-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 26px;
+      color: var(--text-md);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .app-title {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .app-subtitle {
+      color: var(--text-md);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .memory-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 18px;
+      margin-bottom: 14px;
+      border-left: 4px solid var(--teal);
+    }
+
+    .memory-card.people { border-left-color: var(--gold); }
+    .memory-card.health { border-left-color: var(--blue); }
+
+    .memory-label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      background: var(--mint);
+      border-radius: 20px;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+    }
+
+    .memory-card.people .memory-label {
+      color: #6B4E10;
+      background: #F5EDD8;
+    }
+
+    .memory-card.health .memory-label {
+      color: #2A4E5E;
+      background: #E0EDF4;
+    }
+
+    .memory-card h3 {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .memory-card p {
+      color: var(--text-md);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .search-pill {
+      background: var(--teal-dk);
+      border-radius: 14px;
+      padding: 18px;
+      color: var(--linen);
+      margin-top: 22px;
+    }
+
+    .search-pill span {
+      display: block;
+      color: var(--mint);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .search-pill p {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-style: italic;
+      line-height: 1.3;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--linen-dk);
+      margin: 0 40px;
+    }
+
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 78px 40px;
+    }
+
+    .section-narrow { max-width: 880px; }
+
+    .section-heading {
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.16;
+      margin-bottom: 16px;
+      text-wrap: balance;
+    }
+
+    .section-sub {
+      color: var(--text-md);
+      max-width: 620px;
+      margin-bottom: 42px;
+      line-height: 1.72;
+    }
+
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .use-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 28px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .use-card h3,
+    .principle h3,
+    .step h3 {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .use-card p,
+    .principle p,
+    .step p {
+      color: var(--text-md);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .example {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--teal-dk);
+      margin-top: 22px;
+    }
+
+    .flow-strip {
+      background: var(--teal-dk);
+      color: var(--linen);
+      padding: 78px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-strip::before,
+    .flow-strip::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: var(--mint);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .flow-strip::before {
+      width: 240px;
+      height: 240px;
+      top: -76px;
+      right: -30px;
+    }
+
+    .flow-strip::after {
+      width: 150px;
+      height: 150px;
+      left: 8%;
+      bottom: -42px;
+    }
+
+    .flow-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-strip .eyebrow { color: var(--mint); opacity: 0.8; }
+    .flow-strip .section-heading { color: var(--linen); }
+    .flow-strip .section-sub { color: rgba(240,235,225,0.75); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 42px;
+    }
+
+    .step {
+      border-top: 2px solid var(--mint);
+      padding-top: 22px;
+    }
+
+    .step-number {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 12px;
+    }
+
+    .step h3 { color: var(--linen); }
+    .step p { color: rgba(240,235,225,0.72); }
+
+    .category-chips {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .category-chip {
+      background: var(--white);
+      border: 1px solid var(--linen-dk);
+      border-left: 4px solid var(--teal);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 18px;
+    }
+
+    .category-chip span {
+      display: inline-block;
+      border-radius: 20px;
+      background: var(--mint);
+      color: var(--teal-dk);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+    }
+
+    .category-chip.people { border-left-color: var(--gold); }
+    .category-chip.people span { background: #F5EDD8; color: #6B4E10; }
+    .category-chip.home { border-left-color: var(--mauve); }
+    .category-chip.home span { background: #F0E8EC; color: #5A3048; }
+    .category-chip.health { border-left-color: var(--blue); }
+    .category-chip.health span { background: #E0EDF4; color: #2A4E5E; }
+    .category-chip.places { border-left-color: var(--rose); }
+    .category-chip.places span { background: #F5EAE7; color: #6A3020; }
+    .category-chip.events { border-left-color: #C9876B; }
+    .category-chip.events span { background: #F5E9E2; color: #6B3D24; }
+    .category-chip.other { border-left-color: var(--lavender); }
+    .category-chip.other span { background: #EEEDF6; color: #3A3060; }
+    .category-chip.pets { border-left-color: #6B8E5A; }
+    .category-chip.pets span { background: #E8EDE2; color: #3D4F2E; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .price-card {
+      background: var(--white);
+      border: 1px solid var(--linen-dk);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+    }
+
+    .price-card.featured {
+      border-color: var(--teal);
+    }
+
+    .price-card h3 {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .price-card .price {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--teal-dk);
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .price-card .price-note {
+      color: var(--text-md);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: auto;
+    }
+
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .privacy-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 30px;
+    }
+
+    .privacy-list {
+      display: grid;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .privacy-list li {
+      padding-left: 22px;
+      position: relative;
+      color: var(--text-md);
+      line-height: 1.65;
+    }
+
+    .privacy-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .principles {
+      display: grid;
+      gap: 18px;
+    }
+
+    .principle {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 24px;
+    }
+
+    .notify-section {
+      background: var(--mint);
+      padding: 72px 40px;
+    }
+
+    .notify-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .notify-form {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 28px;
+    }
+
+    .notify-form label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .form-row input {
+      flex: 1;
+      min-width: 0;
+      padding: 11px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--linen-dk);
+      background: var(--linen);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-row input:focus { border-color: var(--teal); }
+
+    .form-row button {
+      background: var(--teal);
+      color: var(--linen);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .form-row button:hover,
+    .form-row button:focus-visible { background: var(--teal-dk); }
+
+    .notify-note {
+      color: var(--text-md);
+      font-size: 12px;
+      line-height: 1.55;
+      margin-top: 12px;
+    }
+
+    footer {
+      background: var(--teal-dk);
+      padding: 40px;
+      color: rgba(240,235,225,0.6);
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--linen);
+      text-decoration: none;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--teal-dk);
+      line-height: 1.25;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,235,225,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible { color: var(--linen); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(240,235,225,0.35);
+      width: 100%;
+      margin-top: 20px;
+      border-top: 1px solid rgba(240,235,225,0.35);
+      padding-top: 20px;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .privacy-grid,
+      .notify-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-card { max-width: 440px; }
+      .use-cases,
+      .steps,
+      .category-chips,
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .nav-cta { padding: 10px 16px; }
+      .hero { padding: 64px 20px 56px; gap: 36px; }
+      .section { padding: 58px 20px; }
+      .flow-strip,
+      .notify-section { padding: 58px 20px; }
+      .divider { margin: 0 20px; }
+      .phone-screen { min-height: auto; }
+      .hero-actions { align-items: stretch; }
+      .btn-primary,
+      .btn-secondary { text-align: center; }
+      .form-row { flex-direction: column; }
+      .form-row button { width: 100%; }
+      footer { padding: 32px 20px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <nav aria-label="Primary navigation">
+      <a class="nav-logo" href="/">Ashraya Studio</a>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#notify">Launch list</a></li>
+      </ul>
+      <a class="nav-cta" href="#notify">Get notified</a>
+    </nav>
+
+    <main>
+      <div class="hero-wrap">
+        <div class="blob hero-one" aria-hidden="true"></div>
+        <div class="blob hero-two" aria-hidden="true"></div>
+        <section class="hero" aria-labelledby="hero-title">
+          <div>
+            <p class="eyebrow">Recall · iPhone app</p>
+            <h1 id="hero-title">Your life, remembered.</h1>
+            <p class="hero-tagline">A private memory app for the details you do not want to lose.</p>
+            <p class="hero-body">
+              Recall helps you capture the small facts of daily life — the restaurant you liked, the name you were told, the paint color you chose, the appointment note you meant to remember — and find them later with a simple question.
+            </p>
+            <div class="hero-actions">
+              <a class="btn-primary" href="#notify">Get launch updates</a>
+              <a class="btn-secondary" href="#how-it-works">How it works</a>
+            </div>
+          </div>
+
+          <aside class="phone-card" aria-label="Recall app preview">
+            <div class="phone-screen">
+              <div>
+                <div class="phone-topline"><span>Today</span><span>Private</span></div>
+                <h2 class="app-title">What did I want to remember?</h2>
+                <p class="app-subtitle">A quiet place to keep the details that usually disappear.</p>
+
+                <article class="memory-card">
+                  <span class="memory-label">Food</span>
+                  <h3>Thai place near the library</h3>
+                  <p>Green curry was mild. Ask for the corner table next time.</p>
+                </article>
+
+                <article class="memory-card people">
+                  <span class="memory-label">People</span>
+                  <h3>Mom's new physical therapist</h3>
+                  <p>Name was Anika. Visits are on Thursday mornings.</p>
+                </article>
+
+                <article class="memory-card health">
+                  <span class="memory-label">Health</span>
+                  <h3>Doctor note</h3>
+                  <p>Bring the medication list to the April follow-up.</p>
+                </article>
+              </div>
+
+              <div class="search-pill">
+                <span>Ask later</span>
+                <p>“What was the Thai place we liked in March?”</p>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </div>
+
+      <hr class="divider" />
+
+      <section class="section section-narrow" aria-labelledby="why-title">
+        <p class="eyebrow">Why Recall exists</p>
+        <h2 class="section-heading" id="why-title">Your brain is already carrying enough.</h2>
+        <p class="section-sub">
+          Families run on small details. Recall gives those details a safe place to land, so you can stop replaying them in your head.
+        </p>
+
+        <div class="use-cases">
+          <article class="use-card">
+            <div>
+              <h3>Daily life</h3>
+              <p>Restaurants, names, gift ideas, colors, repair notes, and the small recommendations people give you in passing.</p>
+            </div>
+            <p class="example">“Where did we buy that lamp?”</p>
+          </article>
+
+          <article class="use-card">
+            <div>
+              <h3>Family care</h3>
+              <p>Appointment notes, questions to ask later, routines, preferences, and the details one person usually has to remember for everyone.</p>
+            </div>
+            <p class="example">“What did Mom say worked last time?”</p>
+          </article>
+
+          <article class="use-card">
+            <div>
+              <h3>Personal history</h3>
+              <p>The places you went, the people you met, and the moments that are too ordinary for a photo album but still worth keeping.</p>
+            </div>
+            <p class="example">“When did we visit that garden?”</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="flow-strip" id="how-it-works" aria-labelledby="flow-title">
+        <div class="flow-inner">
+          <p class="eyebrow">How it works</p>
+          <h2 class="section-heading" id="flow-title">Capture in seconds. Find in seconds.</h2>
+          <p class="section-sub">
+            Recall is designed for real life: quick entry when you are busy, plain-language search when you need the answer, and no noisy system to maintain.
+          </p>
+
+          <div class="steps">
+            <article class="step">
+              <p class="step-number">Step 01</p>
+              <h3>Add a memory</h3>
+              <p>Type or speak a quick note. Add as much or as little context as you have.</p>
+            </article>
+            <article class="step">
+              <p class="step-number">Step 02</p>
+              <h3>Let Recall organize it</h3>
+              <p>Memories are grouped into simple categories like food, people, home, health, places, events, pets, and other.</p>
+            </article>
+            <article class="step">
+              <p class="step-number">Step 03</p>
+              <h3>Ask naturally</h3>
+              <p>Search the way you think. Recall brings back the detail without making you remember exact keywords.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="categories" aria-labelledby="categories-title">
+        <p class="eyebrow">Categories</p>
+        <h2 class="section-heading" id="categories-title">Simple places for the details you save.</h2>
+        <p class="section-sub">
+          Recall uses calm, consistent categories so memories are easy to skim without turning your life into a filing system.
+        </p>
+
+        <div class="category-chips" aria-label="Recall memory categories">
+          <article class="category-chip food"><span>Food</span></article>
+          <article class="category-chip people"><span>People</span></article>
+          <article class="category-chip home"><span>Home</span></article>
+          <article class="category-chip health"><span>Health</span></article>
+          <article class="category-chip places"><span>Places</span></article>
+          <article class="category-chip events"><span>Events</span></article>
+          <article class="category-chip other"><span>Other</span></article>
+          <article class="category-chip pets"><span>Pets</span></article>
+        </div>
+      </section>
+
+      <section class="section" id="privacy" aria-labelledby="privacy-title">
+        <div class="privacy-grid">
+          <div>
+            <p class="eyebrow">Private by design</p>
+            <h2 class="section-heading" id="privacy-title">Your memories are not content for someone else.</h2>
+            <p class="section-sub">
+              Recall is being built with Ashraya Studio's privacy principles from the start: no ads, no selling data, and no account required to begin.
+            </p>
+            <div class="privacy-card">
+              <ul class="privacy-list">
+                <li>On-device processing wherever possible.</li>
+                <li>No ads on any tier.</li>
+                <li>No selling user data. Ever.</li>
+                <li>No account required to start using the app.</li>
+                <li>Plain-language privacy, not legal fog.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="principles" aria-label="Recall product principles">
+            <article class="principle">
+              <h3>Fast enough to use</h3>
+              <p>If capturing a memory takes too long, it will not happen. Recall is built for quick, low-friction entry.</p>
+            </article>
+            <article class="principle">
+              <h3>Calm enough to trust</h3>
+              <p>No streaks, no pressure, no productivity theater. The app should feel ready when you need it and quiet when you do not.</p>
+            </article>
+            <article class="principle">
+              <h3>Useful before it is full</h3>
+              <p>Even a handful of memories should be easy to browse, search, and retrieve.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pricing" aria-labelledby="pricing-title">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="section-heading" id="pricing-title">Start small. Keep more when you need it.</h2>
+        <p class="section-sub">
+          Recall is free to try, with paid options for people who want more space for the details they do not want to lose.
+        </p>
+
+        <div class="pricing-grid" aria-label="Recall pricing options">
+          <article class="price-card">
+            <h3>Free</h3>
+            <p class="price">25 memories</p>
+            <p class="price-note">Try Recall with enough room for the first details you want to keep close.</p>
+          </article>
+          <article class="price-card featured">
+            <h3>Monthly</h3>
+            <p class="price">$2.99/mo</p>
+            <p class="price-note">More space for daily life details, family care notes, and everyday search.</p>
+          </article>
+          <article class="price-card">
+            <h3>Family</h3>
+            <p class="price">$5.99/mo</p>
+            <p class="price-note">A monthly option for households carrying more shared details.</p>
+          </article>
+          <article class="price-card">
+            <h3>Annual or lifetime</h3>
+            <p class="price">$49.99/yr or $99 lifetime</p>
+            <p class="price-note">Pay once a year, or choose lifetime access if Recall becomes part of your routine.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="notify-section" id="notify" aria-labelledby="notify-title">
+        <div class="notify-inner">
+          <div>
+            <p class="eyebrow">Coming soon</p>
+            <h2 class="section-heading" id="notify-title">Get one quiet email when Recall is ready.</h2>
+            <p class="section-sub">
+              Join the launch list for Recall by Ashraya Studio. No spam, no sequence, no pressure — just an update when there is something useful to try.
+            </p>
+          </div>
+
+          <form class="notify-form" action="https://buttondown.com/api/emails/embed-subscribe/ashrayastudio" method="post" target="_blank">
+            <label for="email">Email address</label>
+            <div class="form-row">
+              <input id="email" type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
+              <button type="submit">Notify me</button>
+            </div>
+            <p class="notify-note">Powered by Buttondown. You can unsubscribe anytime.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <a class="footer-logo" href="/">Ashraya Studio</a>
+        <p class="footer-tagline">Life, lighter.</p>
+        <ul class="footer-links">
+          <li><a href="https://ashraya.ai/">ashraya.ai</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="https://www.etsy.com/shop/AshrayaStudioCo" target="_blank" rel="noopener">Printables</a></li>
+          <li><a href="mailto:hello@ashraya.ai">Contact</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Ashraya Studio. Recall — Your life, remembered.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
